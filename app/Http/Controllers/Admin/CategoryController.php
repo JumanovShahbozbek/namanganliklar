@@ -55,4 +55,5 @@ class CategoryController extends Controller
 
         return redirect()->route('admin.categories.index')->with('danger', 'Malumot mavaffaqiyatli ochirildi');
     }
+    
 }

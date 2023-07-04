@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('categories')
+@section('posts')
     active
 @endsection
 

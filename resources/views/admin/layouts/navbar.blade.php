@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="navbar-nav w-100">
-            <a href="index.html" class="nav-item nav-link active"><i
+            <a href="index.html" class="nav-item nav-link"><i
                     class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
 
             {{-- <div class="nav-item dropdown">
@@ -30,10 +30,10 @@
                 </div>
             </div> --}}
 
-            <a href="{{ route('admin.categories.index') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Categories</a>
-            {{-- <a href="#" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
-            <a href="#" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
-            <a href="#" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> --}}
+            <a href="{{ route('admin.categories.index') }}" class="nav-item nav-link @yield('categories')"><i class="fa fa-th me-2"></i>Categories</a>
+            <a href="{{ route('admin.posts.index') }}" class="nav-item nav-link @yield('posts')"><i class="fa fa-keyboard me-2"></i>Posts</a>
+            {{-- <a href="#" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a> --}}
+            {{-- <a href="#" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> --}}
             <div class="nav-item dropdown">
 
                 {{-- <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i

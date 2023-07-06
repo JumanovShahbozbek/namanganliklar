@@ -33,7 +33,8 @@
             <a href="{{ route('admin.categories.index') }}" class="nav-item nav-link @yield('categories')"><i class="fa fa-th me-2"></i>Categories</a>
             <a href="{{ route('admin.posts.index') }}" class="nav-item nav-link @yield('posts')"><i class="fa fa-keyboard me-2"></i>Posts</a>
             <a href="{{ route('admin.messages.index') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Messages</a>
-            {{-- <a href="#" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> --}}
+            <a href="{{ route('admin.logins.index') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>logins</a>
+            <a href="{{ route('admin.audits.index') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>audits</a>
             <div class="nav-item dropdown">
 
                 {{-- <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i

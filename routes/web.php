@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AuditController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\InfoController;
+use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RegisterController;
@@ -35,6 +37,8 @@ Route::prefix('admin/')->name('admin.')->middleware('auth')->group(function()
         '/categories' => CategoryController::class,
         '/posts' => PostController::class,
         '/messages' => RegisterController::class,
+        '/logins' => LoginController::class,
+        '/audits' => AuditController::class,
     ]);
 });
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\AuditEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = DB::table('categories')->orderBy('id', 'DESC')->get();
+        $categories = Category::orderBy('id', 'DESC')->get();
 
         return view('admin.categories.index', compact('categories'));
     }
@@ -21,8 +22,11 @@ class CategoryController extends Controller
         return view('admin.categories.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Category $category)
     {
+        $user = auth()->user()->name;
+        event(new AuditEvent('create', 'categories', $user, $category));
+
         Category::create($request->all());
 
         return redirect()->route('admin.categories.index')->with('success', 'Malumot muvaffaqiyatli qoshildi');
@@ -42,16 +46,23 @@ class CategoryController extends Controller
         return view('admin.categories.edit', compact('category'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, Category $category)
     {
+        $user = auth()->user()->name;
+        event(new AuditEvent('edit', 'categories', $user, $category));
+
         Category::find($id)->update($request->all());
 
         return redirect()->route('admin.categories.index')->with('success', 'Malumot mavaffaqiyatli ozgartirildi');
     }
 
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        Category::find($id)->delete();
+        $user = auth()->user()->name;
+        event(new AuditEvent('delete', 'categories', $user, $category));
+
+        // Category::find($id)->delete();
+        $category->delete();
 
         return redirect()->route('admin.categories.index')->with('danger', 'Malumot mavaffaqiyatli ochirildi');
     }

@@ -25,9 +25,9 @@ class AuditEvent
     public function __construct($event, $table, $user, $data)
     {
         $this->event = $event;
-        $this->event = $table;
-        $this->event = $user;
-        $this->event = $data;
+        $this->table = $table;
+        $this->user = $user;
+        $this->data = $data;
     }
 
     /**

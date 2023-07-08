@@ -30,6 +30,11 @@
                     <td><b>{{ $audit->tablename }}</b></td>
                 </tr>
 
+                <tr>
+                    <td> Data: </td>
+                    <td><b>{{ $audit->data }}</b></td>
+                </tr>
+
                 
             </thead>
         </table>

@@ -27,16 +27,17 @@ class SiteController extends Controller
         return view('pages.list');
     }
 
-    public function post_registers(Request $request)
+    public function post_messages(Request $request)
     {
-        DB::table('registers')->insert([
+        DB::table('messages')->insert([
             'name' => $request->name,
             'email' => $request->email,
             'number' => $request->number,
             'content' => $request->content,
             'file' => $request->file,
+            'status' => 0
         ]);
         
-        return back();
+        return back()->with('success', 'Xabar jo`natildi');
     }
 }

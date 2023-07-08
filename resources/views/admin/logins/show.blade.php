@@ -17,12 +17,12 @@
             <thead>
                 <tr>
                     <td> Name: </td>
-                    <td><b>{{ $userinfo->username }}</b></td>
+                    <td><b>{{ $login->username }}</b></td>
                 </tr>
 
                 <tr>
                     <td> Email: </td>
-                    <td><b>{{ $userinfo->date }}</b></td>
+                    <td><b>{{ $login->date }}</b></td>
                 </tr>
                 
             </thead>

@@ -3,11 +3,9 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuditController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\InfoController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\PostController;
-use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -36,7 +34,7 @@ Route::prefix('admin/')->name('admin.')->middleware('auth')->group(function()
     Route::resources([
         '/categories' => CategoryController::class,
         '/posts' => PostController::class,
-        '/messages' => RegisterController::class,
+        '/messages' => MessageController::class,
         '/logins' => LoginController::class,
         '/audits' => AuditController::class,
     ]);

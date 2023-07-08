@@ -47,8 +47,9 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        // return redirect(RouteServiceProvider::HOME);
-        
-        return redirect(route('admin.dashboard'));
+        /* $user = $data['name'];
+        event(new LoginEvent($user)); */
+
+        return redirect(RouteServiceProvider::HOME);
     }
 }

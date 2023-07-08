@@ -23,45 +23,44 @@
 
         <div class="bg-light rounded h-100 p-4">
             <h6 class="mb-4">Messages</h6>
-            {{-- <div style=" right: 50;">
-                <a href="{{ route('admin.messages.create') }}">
-                    <button type="button" class="btn btn-primary"> Create </button>
-                </a>
-            </div> --}}
 
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Email</th>
                         <th scope="col">Number</th>
-                        <th scope="col">Content</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @if (count($registers) == 0)
+                    @if (count($messages) == 0)
                         <tr>
                             <td colspan="5" class="h5 text-center text-muted">Ma'lumot qo'shilmagan
                             </td>
                         </tr>
                     @endif
 
-                    @foreach ($registers as $register)
+                    @foreach ($messages as $item)
                         <tr>
                             <th scope="row">{{ ++$loop->index }}</th>
-                            <td>{{ $register->name }}</td>
-                            <td>{{ $register->email }}</td>
-                            <td>{{ $register->number }}</td>
-                            <td>{{ $register->content }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->number }}</td>
+                            <td>
+                                @if ($item->status == 0)
+                                    <font style="color: red">O`qilmagan</font>
+                                @else
+                                    <font style="color: green">O`qilgan</font>
+                                @endif
+                            </td>
 
                             <td>
-                                <form action="{{ route('admin.messages.destroy', $register->id) }} " method="POSt">
+                                <form action="{{ route('admin.messages.destroy', $item->id) }} " method="POSt">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="{{ route('admin.messages.show', $register->id) }}">
+                                    <a href="{{ route('admin.messages.show', $item->id) }}">
                                         <button type="button" class="btn btn-square btn-info m-2"><i
                                                 class="fas fa-eye"></i></button>
                                     </a>

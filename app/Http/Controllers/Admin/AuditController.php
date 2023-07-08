@@ -16,19 +16,22 @@ class AuditController extends Controller
         return view('admin.audits.index', compact('audits'));
     }
 
-    public function show(Audit $login, $id)
+    public function show($id)
     {
-        $Login = Audit::find($id);
+        $audit = Audit::find($id);
+
+        Audit::find($id)->update(['status' => 1]);
 
         return view('admin.audits.show', compact('audit'));
     }
 
-    public function destroy(Audit $audit, $id)
+    public function destroy(Audit $audit)
     {
         $user = auth()->user()->name;
         event(new AuditEvent('delete', 'audits', $user, $audit));
 
-        Audit::find($id)->delete();
+        // Audit::find($id)->delete();
+        $audit->delete();
 
         return redirect()->route('admin.audits.index')->with('danger', 'Malumot mavaffaqiyatli ochirildi');
     }

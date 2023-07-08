@@ -11,24 +11,25 @@ class LoginController extends Controller
 {
     public function index()
     {
-        $userinfos = Login::orderBy('id', 'DESC')->get();
+        $logins = Login::orderBy('id', 'DESC')->get();
 
-        return view('admin.logins.index', compact('userinfos'));
+        return view('admin.logins.index', compact('logins'));
     }
 
     public function show(Login $userinfo, $id)
     {
-        $userinfo = Login::find($id);
+        $login = Login::find($id);
 
-        return view('admin.logins.show', compact('userinfo'));
+        return view('admin.logins.show', compact('login'));
     }
 
-    public function destroy(Login $userinfo, $id)
+    public function destroy(Login $login)
     {
         $user = auth()->user()->name;
-        event(new AuditEvent('delete', 'logins', $user, $userinfo));
+        event(new AuditEvent('delete', 'logins', $user, $login));
 
-        Login::find($id)->delete();
+        // Login::find($id)->delete();
+        $login->delete();
 
         return redirect()->route('admin.logins.index')->with('danger', 'Malumot mavaffaqiyatli ochirildi');
     }

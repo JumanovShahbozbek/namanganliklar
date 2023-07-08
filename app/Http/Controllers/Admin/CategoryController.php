@@ -46,12 +46,14 @@ class CategoryController extends Controller
         return view('admin.categories.edit', compact('category'));
     }
 
-    public function update(Request $request, $id, Category $category)
+    public function update(Request $request, Category $category)
     {
         $user = auth()->user()->name;
         event(new AuditEvent('edit', 'categories', $user, $category));
+        $requestData = $request->all();
 
-        Category::find($id)->update($request->all());
+        // Category::find($id)->update($request->all());
+        $category->update($requestData);
 
         return redirect()->route('admin.categories.index')->with('success', 'Malumot mavaffaqiyatli ozgartirildi');
     }
@@ -66,5 +68,4 @@ class CategoryController extends Controller
 
         return redirect()->route('admin.categories.index')->with('danger', 'Malumot mavaffaqiyatli ochirildi');
     }
-    
 }

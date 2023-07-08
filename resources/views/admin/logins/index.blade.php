@@ -35,23 +35,23 @@
                 </thead>
 
                 <tbody>
-                    @if (count($userinfos) == 0)
+                    @if (count($logins) == 0)
                         <tr>
                             <td colspan="5" class="h5 text-center text-muted">Ma'lumot qo'shilmagan
                             </td>
                         </tr>
                     @endif
 
-                    @foreach ($userinfos as $userinfo)
+                    @foreach ($logins as $item)
                         <tr>
                             <th scope="row">{{ ++$loop->index }}</th>
-                            <td>{{ $userinfo->username }}</td>
-                            <td>{{ $userinfo->date }}</td>
+                            <td>{{ $item->username }}</td>
+                            <td>{{ $item->date }}</td>
                             <td>
-                                <form action="{{ route('admin.logins.destroy', $userinfo->id) }} " method="POSt">
+                                <form action="{{ route('admin.logins.destroy', $item->id) }} " method="POSt">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="{{ route('admin.logins.show', $userinfo->id) }}">
+                                    <a href="{{ route('admin.logins.show', $item->id) }}">
                                         <button type="button" class="btn btn-square btn-info m-2"><i
                                                 class="fas fa-eye"></i></button>
                                     </a>

@@ -36,6 +36,7 @@
                         <th scope="col">event</th>
                         <th scope="col">user</th>
                         <th scope="col">table</th>
+                        <th scope="col">Status</th>
                         
                         <th scope="col">Action</th>
                     </tr>
@@ -55,6 +56,13 @@
                             <td>{{ $audit->event }}</td>
                             <td>{{ $audit->username }}</td>
                             <td>{{ $audit->tablename }}</td>
+                            <td>
+                                @if ($audit->status == 0)
+                                    <font style="color: red">O`qilmagan</font>
+                                @else
+                                    <font style="color: green">O`qilgan</font>
+                                @endif
+                            </td>
                             
 
                             <td>

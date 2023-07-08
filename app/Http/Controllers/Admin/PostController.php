@@ -86,6 +86,7 @@ class PostController extends Controller
 
         // Post::find($id)->delete();
         $post->delete();
+        
         $this->unlink_file($post);
 
         return redirect()->route('admin.posts.index')->with('danger', 'Malumot mavaffaqiyatli ochirildi');
@@ -94,10 +95,11 @@ class PostController extends Controller
     public function upload_file()
     {
         $file = request()->file('img');
-        $fileName = time().'-'.$file->getClientOriginalName();
+        $fileName = time() . '-' . $file->getClientOriginalName();
         $file->move('images/', $fileName);
+        $requestData['img'] = $fileName;
         return $fileName;
-    }  
+    }
 
     public function unlink_file(Post $post)
     {

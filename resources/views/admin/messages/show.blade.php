@@ -17,22 +17,22 @@
             <thead>
                 <tr>
                     <td> Name: </td>
-                    <td><b>{{ $register->name }}</b></td>
+                    <td><b>{{ $message->name }}</b></td>
                 </tr>
 
                 <tr>
                     <td> Email: </td>
-                    <td><b>{{ $register->email }}</b></td>
+                    <td><b>{{ $message->email }}</b></td>
                 </tr>
 
                 <tr>
                     <td> Number: </td>
-                    <td><b>{{ $register->number }}</b></td>
+                    <td><b>{{ $message->number }}</b></td>
                 </tr>
 
                 <tr>
                     <td> Content: </td>
-                    <td><b>{{ $register->content }}</b></td>
+                    <td><b>{{ $message->content }}</b></td>
                 </tr>
                 
             </thead>

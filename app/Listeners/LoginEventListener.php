@@ -21,12 +21,12 @@ class LoginEventListener
     /**
      * Handle the event.
      */
-    public function handle(LoginEvent $event): void
+    public function handle($event): void
     {
         /* \Log::info("User name {$event->user}"); */
 
-        DB::table('userinfos')->insert([
-            'name' => $event->user,
+        DB::table('logins')->insert([
+            'username' => $event->user,
             'date' => date('Y-m-d H:i:s')
         ]);
     }

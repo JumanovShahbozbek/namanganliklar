@@ -20,7 +20,7 @@ class AuditEventListener
     /**
      * Handle the event.
      */
-    public function handle(AuditEvent $event, $table, $user, $data): void
+    public function handle(AuditEvent $event): void
     {
         // \Log::info("User name {$event->user}");
 
@@ -29,6 +29,7 @@ class AuditEventListener
             'tablename' => $event->table,
             'username' => $event->user,
             'data' => $event->data,
+            'status' => 0,
         ]);
     }
 }

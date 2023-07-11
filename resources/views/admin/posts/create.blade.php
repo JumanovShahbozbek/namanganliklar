@@ -23,16 +23,8 @@
             <div class="bg-light rounded h-100 p-4">
                 <h6 class="mb-4">Ma'lumot qo`shish</h6>
                 <div class="bg-light rounded h-100 p-4">
-                    <form action="{{ route('admin.posts.store') }}" method="POST">
+                    <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-
-                        <div class="mb-3">
-                            <label class="form-label">Category</label>
-                            <input type="text" name="category_id" value="{{ old('category_id') }}" class="form-control">
-                            @error('category_id')
-                                {{ $message }}
-                            @enderror
-                        </div>
 
                         <div class="col-sm-12 col-md-4">
                             <label class="form-label">Category</label>
@@ -61,7 +53,7 @@
 
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Default file input example</label>
-                            <input class="form-control" type="file" id="formFile">
+                            <input type="file" class="form-control" name="img">
                         </div>
 
                         <div class="mb-3">

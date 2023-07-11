@@ -72,7 +72,14 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Message</span>
+                            <span class="d-none d-lg-inline-flex">
+                                <p style="color: red">
+                                    @php
+                                        echo count($messages);
+                                    @endphp
+                                </p> &nbsp;
+                                Message
+                            </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
 
@@ -89,8 +96,11 @@
                                 </a>
                                 <hr class="dropdown-divider">
                             @endforeach
-
-                            <a href="/admin/messages" class="dropdown-item text-center">See all message</a>
+                            @if (count($messages) == 0)
+                                <span style="color: red">Xabarlar yoq</span>
+                            @else
+                                <a href="/admin/messages" class="dropdown-item text-center">See all message</a>
+                            @endif
                         </div>
                     </div>
                     @php
@@ -103,19 +113,38 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notificatin</span>
+                            <span class="d-none d-lg-inline-flex">
+                                <p style="color: red">
+                                    @php
+                                       echo count($audits);
+                                    @endphp
+                                </p> &nbsp;
+                                Notificatin
+                            </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
 
                             @foreach ($audits as $audit)
                                 <a href="{{ route('admin.audits.show', $audit->id) }}" class="dropdown-item">
-                                    <h6 class="fw-normal mb-0">{{ $audit->username }}</h6>
+                                    <h6 class="fw-normal mb-0">
+                                        @if ($audit->event == 'delete')
+                                            Ma`lumot ochirildi
+                                        @elseif ($audit->event == 'edit')
+                                            Ma`lumot o`zgartirildi
+                                        @else
+                                            Ma`lumot qo`shildi
+                                        @endif
+                                    </h6>
                                     <small>{{ $audit->updated_at }}</small>
                                 </a>
                                 <hr class="dropdown-divider">
                             @endforeach
-
-                            <a href="/admin/audits" class="dropdown-item text-center">See all notifications</a>
+                            
+                            @if (count($audits) == 0)
+                                <span style="color: red">O`zgartirishlar yoq</span>
+                            @else
+                                <a href="/admin/audits" class="dropdown-item text-center">See all notifications</a>
+                            @endif
                         </div>
                     </div>
                     <div class="nav-item dropdown">
@@ -129,7 +158,8 @@
                             <a href="#" class="dropdown-item">Settings</a>
                             <form action="{{ route('logout') }}" class="logout" method="POST">
                                 @csrf
-                                <button class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
+                                <button class="dropdown-item has-icon text-danger"> <i
+                                        class="fas fa-sign-out-alt"></i>
                                     Log out</button>
                             </form>
                         </div>

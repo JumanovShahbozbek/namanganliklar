@@ -18,6 +18,7 @@ class LoginEvent
      * Create a new event instance.
      */
     public $user;
+    
     public function __construct($user)
     {
         $this->user = $user;

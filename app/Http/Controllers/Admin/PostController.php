@@ -95,9 +95,8 @@ class PostController extends Controller
     public function upload_file()
     {
         $file = request()->file('img');
-        $fileName = time() . '-' . $file->getClientOriginalName();
+        $fileName = time(). '-'. $file->getClientOriginalName();
         $file->move('images/', $fileName);
-        $requestData['img'] = $fileName;
         return $fileName;
     }
 

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('username');
             $table->timestamp('date');
-            
+            $table->integer('status')->nullable();
         });
     }
 

@@ -33,9 +33,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        /* $user = $data['name'];
+        $user = auth()->user()->name;
         event(new LoginEvent($user));
- */
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
@@ -49,6 +49,9 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+
+        $user = auth()->user()->name;
+        event(new LoginEvent($user));
 
         return redirect('/');
     }

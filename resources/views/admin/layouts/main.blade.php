@@ -74,9 +74,10 @@
                             <i class="fa fa-envelope me-lg-2"></i>
                             <span class="d-none d-lg-inline-flex">
                                 <p style="color: red">
-                                    @php
+                                    {{-- @php
                                         echo count($messages);
-                                    @endphp
+                                    @endphp --}}
+                                    {{ count($messages) }}
                                 </p> &nbsp;
                                 Message
                             </span>

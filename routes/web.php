@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\TegController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,7 @@ Route::prefix('admin/')->name('admin.')->middleware('auth')->group(function()
         '/messages' => MessageController::class,
         '/logins' => LoginController::class,
         '/audits' => AuditController::class,
+        '/tegs' => TegController::class,
     ]);
 });
 

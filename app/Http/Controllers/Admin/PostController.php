@@ -6,6 +6,7 @@ use App\Events\AuditEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Teg;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,12 +24,15 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $tegs = Teg::all();
 
-        return view('admin.posts.create', compact('categories'));
+        return view('admin.posts.create', compact('categories', 'tegs'));
     }
 
     public function store(Request $request, Post $post)
     {
+        // return $request;
+
         $user = auth()->user()->name;
         event(new AuditEvent('create', 'posts', $user, $post));
 
@@ -39,7 +43,9 @@ class PostController extends Controller
             $requestData['img'] = $this->upload_file();
         }
 
-        Post::create($requestData);
+        $post = Post::create($requestData);
+
+        $post->tegs()->attach($request->teg_id);
 
         return redirect(route('admin.posts.index'))->with('succes', 'Ma`lumot q`oshildi');
     }

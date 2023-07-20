@@ -32,7 +32,7 @@
 
                 <tr>
                     <td>Image: </td>
-                    <td><b>{{ $post->img }}</b></td>
+                    <td><b><img src="/images/{{ $post->img }}" width="100" alt=""></b>
                 </tr>
 
                 <tr>
@@ -45,8 +45,19 @@
                     <td><b>{{ $post->body_uz }}</b></td>
                 </tr>
 
+                <tr>
+                    <td>Tegs: </td>
+                    <td>
+                        <b>
+                            @foreach ($post->tegs as $teg)
+                            {{ $teg->teg_uz}}<br>
+                            @endforeach
+                        </b>
+                    </td>
+                </tr>
+
             </thead>
         </table>
-        
+
     </div>
 @endsection

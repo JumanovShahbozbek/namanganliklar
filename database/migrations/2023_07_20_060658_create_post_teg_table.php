@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts_teg', function (Blueprint $table) {
+        Schema::create('post_teg', function (Blueprint $table) {
             $table->id();
-            $table->integer('posts_id');
+            $table->integer('post_id');
             $table->integer('teg_id');
             $table->timestamps();
         });
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts_teg');
+        Schema::dropIfExists('post_teg');
     }
 };

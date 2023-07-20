@@ -53,7 +53,12 @@
                     {{ $message }}
                 @enderror
 
-
+                <strong> Rasm(png yoki jpg) :</strong>
+                <input type="file" name="icon" value="{{ $post->img }}" class="form-control"> <br>
+                <img src="/images/{{ $post->img }}" width="50" alt=""><br><br>
+                @error('img')
+                    {{ $message }}
+                @enderror
 
                 <strong> Body uz:</strong>
                 <input type="text" name="body_uz" value="{{ $post->body_uz }}" class="form-control"> <br>

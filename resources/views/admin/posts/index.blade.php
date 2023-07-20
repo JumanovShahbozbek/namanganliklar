@@ -38,8 +38,7 @@
                         <th scope="col">Title_ru</th>
                         <th scope="col">Img</th>
                         <th scope="col">Body_uz</th>
-                        <th scope="col">Body_ru</th>
-                        <th scope="col">Views</th>
+                        {{-- <th scope="col">Views</th> --}}
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -58,10 +57,9 @@
                             <td>{{ $post->category_id }}</td>
                             <td>{{ $post->title_uz }}</td>
                             <td>{{ $post->title_ru }}</td>
-                            <td>{{ $post->img }}</td>
+                            <td><img src="/images/{{ $post->img }}" alt="" width="70px"></td>
                             <td>{{ $post->body_uz }}</td>
-                            <td>{{ $post->body_ru }}</td>
-                            <td>{{ $post->views }}</td>
+                            {{-- <td>{{ $post->views }}</td> --}}
 
                             <td>
                                 <form action="{{ route('admin.posts.destroy', $post->id) }} " method="POSt">

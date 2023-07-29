@@ -63,7 +63,9 @@ class PostController extends Controller
 
         $post = Post::find($id);
 
-        return view('admin.posts.edit', compact('post', 'categories'));
+        $tegs = Teg::all();
+
+        return view('admin.posts.edit', compact('post', 'categories', 'tegs'));
     }
 
     public function update(Request $request, Post $post)
@@ -82,6 +84,8 @@ class PostController extends Controller
 
         $post->update($requestData);
 
+        $post->tegs()->sync($request->teg_id);
+
         return redirect(route('admin.posts.index'))->with('success', 'Malumot mavaffaqiyatli ozgartirildi');
     }
 
@@ -90,7 +94,7 @@ class PostController extends Controller
         $user = auth()->user()->name;
         event(new AuditEvent('delete', 'posts', $user, $post));
 
-        // Post::find($id)->delete();
+        $post->tegs()->detach();
         $post->delete();
         
         $this->unlink_file($post);
@@ -103,6 +107,7 @@ class PostController extends Controller
         $file = request()->file('img');
         $fileName = time(). '-'. $file->getClientOriginalName();
         $file->move('images/', $fileName);
+        
         return $fileName;
     }
 

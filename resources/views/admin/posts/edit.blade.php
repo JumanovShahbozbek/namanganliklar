@@ -41,6 +41,19 @@
                     </select>
                 </div>
 
+                <div class="col-sm-12 col-md-4">
+                    <label class="form-label">Tegs</label>
+                    <select class="form-select mb-3" name="teg_id[]" multiple>
+                        @foreach ($tegs as $teg)
+                            <option
+                                @foreach ($post->tegs as $postsTeg)
+                                @if ($postsTeg->id == $teg->id) selected @endif @endforeach
+                                value="{{ $teg->id }}">{{ $teg->teg_uz }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <strong> Title uz:</strong>
                 <input type="text" name="title_uz" value="{{ $post->title_uz }}" class="form-control"> <br>
                 @error('title_uz')

@@ -25,7 +25,7 @@
         <header class="main-header">
             <div class="container">
                 <div class="basic-flex header__top">
-                    <a href="#" class="logo">
+                    <a href="/" class="logo">
                         <img src="assets/img/logo.png" alt="NAMANGANLIKLAR24">
                     </a>
                     <div class="currencies basic-flex">

@@ -67,6 +67,11 @@
                         ->where('status', 0)
                         ->take(4)
                         ->get();
+                    
+                    $sms = DB::table('messages')
+                        ->latest()
+                        ->where('status', 0)
+                        ->get();
                 @endphp
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
@@ -74,10 +79,7 @@
                             <i class="fa fa-envelope me-lg-2"></i>
                             <span class="d-none d-lg-inline-flex">
                                 <p style="color: red">
-                                    {{-- @php
-                                        echo count($messages);
-                                    @endphp --}}
-                                    {{ count($messages) }}
+                                    {{ count($sms) }}
                                 </p> &nbsp;
                                 Message
                             </span>
@@ -91,17 +93,19 @@
                                             style="width: 40px; height: 40px;">
                                         <div class="ms-2">
                                             <h6 class="fw-normal mb-0">{{ $item->name }}</h6>
-                                            <small>{{ $item->created_at }}</small>
+                                            <small>{{ $item->updated_at }}</small>
                                         </div>
                                     </div>
                                 </a>
                                 <hr class="dropdown-divider">
                             @endforeach
+
                             @if (count($messages) == 0)
                                 <span style="color: red">Xabarlar yoq</span>
                             @else
                                 <a href="/admin/messages" class="dropdown-item text-center">See all message</a>
                             @endif
+
                         </div>
                     </div>
                     @php
@@ -110,15 +114,18 @@
                             ->where('status', 0)
                             ->take(4)
                             ->get();
+                        
+                        $audit = DB::table('audits')
+                            ->latest()
+                            ->where('status', 0)
+                            ->get();
                     @endphp
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <i class="fa fa-bell me-lg-2"></i>
                             <span class="d-none d-lg-inline-flex">
                                 <p style="color: red">
-                                    @php
-                                       echo count($audits);
-                                    @endphp
+                                    {{ count($audit) }}
                                 </p> &nbsp;
                                 Notificatin
                             </span>
@@ -140,7 +147,7 @@
                                 </a>
                                 <hr class="dropdown-divider">
                             @endforeach
-                            
+
                             @if (count($audits) == 0)
                                 <span style="color: red">O`zgartirishlar yoq</span>
                             @else
@@ -207,6 +214,13 @@
     <script src="/admin/assets/lib/tempusdominus/js/moment.min.js"></script>
     <script src="/admin/assets/lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="/admin/assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.ckeditor').ckeditor();
+        });
+    </script>
 
     <!-- Template Javascript -->
     <script src="/admin/assets/js/main.js"></script>

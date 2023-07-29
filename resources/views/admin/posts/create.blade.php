@@ -67,15 +67,15 @@
 
                         <div class="mb-3">
                             <label class="form-label">Body Uz</label>
-                            <input type="text" name="body_uz" value="{{ old('body_uz') }}" class="form-control">
+                            <textarea class="ckeditor form-control" name="body_uz" value="{{ old('body_uz') }}"></textarea>
                             @error('body_uz')
                                 {{ $message }}
                             @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Body Ru</label>
-                            <input type="text" name="body_ru" value="{{ old('body_ru') }}" class="form-control">
+                        <div class=" mb-3">
+                            <label class="form-label">Body ru</label>
+                            <textarea class="ckeditor form-control" name="body_ru" value="{{ old('body_ru') }}"></textarea>
                             @error('body_ru')
                                 {{ $message }}
                             @enderror

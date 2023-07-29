@@ -37,7 +37,7 @@
                         <th scope="col">Title_uz</th>
                         <th scope="col">Title_ru</th>
                         <th scope="col">Img</th>
-                        <th scope="col">Body_uz</th>
+                        {{-- <th scope="col">Body_uz</th> --}}
                         {{-- <th scope="col">Views</th> --}}
                         <th scope="col">Action</th>
                     </tr>
@@ -58,7 +58,7 @@
                             <td>{{ $post->title_uz }}</td>
                             <td>{{ $post->title_ru }}</td>
                             <td><img src="/images/{{ $post->img }}" alt="" width="70px"></td>
-                            <td>{{ $post->body_uz }}</td>
+                           {{--  <td>{{ $post->body_uz }}</td> --}}
                             {{-- <td>{{ $post->views }}</td> --}}
 
                             <td>

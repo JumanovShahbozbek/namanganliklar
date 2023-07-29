@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -9,22 +11,54 @@ class SiteController extends Controller
 {
     public function get_index()
     {
-        return view('welcome');
+        $categories = Category::orderBy('id', 'DESC')->limit(7)->get();
+        $posts = Post::limit(6)->latest()->get();
+
+        return view('welcome', compact('categories', 'posts'));
     }
 
     public function get_article()
     {
-        return view('pages.article');
+        $categories = Category::orderBy('id', 'DESC')->limit(7)->get();
+        $posts = Post::orderBy('id', 'DESC')->limit(6)->get();
+
+        return view('pages.article', compact('categories', 'posts'));
     }
 
     public function get_contact()
     {
-        return view('pages.contact');
+        $categories = Category::orderBy('id', 'DESC')->limit(7)->get();
+
+        return view('pages.contact', compact('categories'));
     }
 
-    public function get_list()
+    public function get_list($id)
     {
-        return view('pages.list');
+        $categories = Category::orderBy('id', 'DESC')->limit(7)->get();
+        $posts = Post::orderBy('id', 'DESC')->limit(6)->get();
+        $category = Category::where('id', $id)->first();
+
+
+        return view('pages.list', compact('categories', 'posts', 'category'));
+    }
+
+    public function singlePost($id){
+
+        $post = Post::where('id', $id)->first();
+        $categories = Category::orderBy('id', 'DESC')->limit(7)->get();
+        $posts = Post::orderBy('id', 'DESC')->limit(6)->get();
+        /* $post->increment('view');
+        $post->save();
+
+        $otherPosts = \App\Models\Post::where('category_id', $post->category_id)
+        ->where('id', '!=', $post->id)
+        ->limit(3)->latest()->get();
+
+        Meta::prependTitle($post->meta_title);
+        Meta::setDescription($post->meta_description);
+        Meta::setKeywords($post->meta_keywords); */
+
+        return view('pages.singlePost', compact('post', 'categories', 'posts'));
     }
 
     public function post_messages(Request $request)

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NAMANGANLIKLAR 24</title>
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
             <div class="container">
                 <div class="basic-flex header__top">
                     <a href="/" class="logo">
-                        <img src="assets/img/logo.png" alt="NAMANGANLIKLAR24">
+                        <img src="/assets/img/logo.png" alt="NAMANGANLIKLAR24">
                     </a>
                     <div class="currencies basic-flex">
                         <div class="currency"><span>$</span><span>10137.2 </span></div>
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="telegram-join basic-flex">
-                            <a href="#"><img src="assets/img/tg.png" alt="Telegram">Подписатся</a>
+                            <a href="#"><img src="/assets/img/tg.png" alt="Telegram">Подписатся</a>
                         </div>
                     </div>
                 </div>

@@ -28,6 +28,7 @@ Route::get('/', function () {
 
 Route::auto('/', SiteController::class);
 Route::get('/singlePost/{id}', [SiteController::class, 'singlePost'])->name('singlePost');
+Route::get('/category/{id}', [SiteController::class, 'list'])->name('list');
 
 Route::prefix('admin/')->name('admin.')->middleware('auth')->group(function()
 {

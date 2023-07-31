@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use Butschster\Head\Facades\Meta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,54 +12,41 @@ class SiteController extends Controller
 {
     public function get_index()
     {
-        $categories = Category::orderBy('id', 'DESC')->limit(7)->get();
-        $posts = Post::limit(6)->latest()->get();
+        $categories = Category::orderBy('id', 'DESC')->limit(10)->get();
+        $posts = Post::inRandomOrder()->limit(6)->latest()->get();
+        $popular_news = Post::inRandomOrder()->limit(5)->get();
+        $latest_news = Post::all();
 
-        return view('welcome', compact('categories', 'posts'));
-    }
-
-    public function get_article()
-    {
-        $categories = Category::orderBy('id', 'DESC')->limit(7)->get();
-        $posts = Post::orderBy('id', 'DESC')->limit(6)->get();
-
-        return view('pages.article', compact('categories', 'posts'));
+        return view('welcome', compact('categories', 'posts', 'latest_news', 'popular_news'));
     }
 
     public function get_contact()
     {
-        $categories = Category::orderBy('id', 'DESC')->limit(7)->get();
+        $categories = Category::orderBy('id', 'DESC')->limit(10)->get();
 
         return view('pages.contact', compact('categories'));
     }
 
-    public function get_list($id)
+    public function list($id)
     {
-        $categories = Category::orderBy('id', 'DESC')->limit(7)->get();
-        $posts = Post::orderBy('id', 'DESC')->limit(6)->get();
+        $categories = Category::limit(10)->latest()->get();
         $category = Category::where('id', $id)->first();
-
-
-        return view('pages.list', compact('categories', 'posts', 'category'));
-    }
+        $posts = $category->posts()->paginate(6);
+        $popular_news = Post::limit(5)->where('id', '!=', $id)->inRandomOrder()->get();
+        
+        
+        return view('pages.list',compact('categories', 'category', 'posts', 'popular_news'));
+    } 
 
     public function singlePost($id){
 
         $post = Post::where('id', $id)->first();
-        $categories = Category::orderBy('id', 'DESC')->limit(7)->get();
-        $posts = Post::orderBy('id', 'DESC')->limit(6)->get();
-        /* $post->increment('view');
-        $post->save();
+        $categories = Category::orderBy('id', 'DESC')->limit(10)->get();
+        $posts = Post::inRandomOrder()->limit(3)->get();
+        $popular_news = Post::inRandomOrder()->limit(5)->get();
 
-        $otherPosts = \App\Models\Post::where('category_id', $post->category_id)
-        ->where('id', '!=', $post->id)
-        ->limit(3)->latest()->get();
 
-        Meta::prependTitle($post->meta_title);
-        Meta::setDescription($post->meta_description);
-        Meta::setKeywords($post->meta_keywords); */
-
-        return view('pages.singlePost', compact('post', 'categories', 'posts'));
+        return view('pages.singlePost', compact('post', 'categories', 'posts', 'popular_news'));
     }
 
     public function post_messages(Request $request)

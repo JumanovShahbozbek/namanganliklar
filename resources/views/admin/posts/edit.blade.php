@@ -74,13 +74,15 @@
                 @enderror
 
                 <strong> Body uz:</strong>
-                <input type="text" name="body_uz" value="{{ $post->body_uz }}" class="form-control"> <br>
+                <textarea class="ckeditor form-control" type="text" name="body_uz" value="{{ $post->body_uz }}"></textarea>
+                {{-- <input type="text" name="body_uz" value="{{ $post->body_uz }}" class="form-control"> --}} <br>
                 @error('body_uz')
                     {{ $message }}
                 @enderror
 
                 <strong> Body ru:</strong>
-                <input type="text" name="body_ru" value="{{ $post->body_ru }}" class="form-control"> <br>
+                <textarea class="ckeditor form-control" name="body_ru" value="{{ $post->body_ru }}"></textarea>
+                {{-- <input type="text" name="body_ru" value="{{ $post->body_ru }}" class="form-control"> --}} <br>
                 @error('body_ru')
                     {{ $message }}
                 @enderror

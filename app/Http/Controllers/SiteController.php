@@ -15,7 +15,7 @@ class SiteController extends Controller
         $categories = Category::orderBy('id', 'DESC')->limit(10)->get();
         $posts = Post::inRandomOrder()->limit(6)->latest()->get();
         $popular_news = Post::inRandomOrder()->limit(5)->get();
-        $latest_news = Post::all();
+        $latest_news = Post::inRandomOrder()->limit(5)->get();
 
         return view('welcome', compact('categories', 'posts', 'latest_news', 'popular_news'));
     }
@@ -31,7 +31,7 @@ class SiteController extends Controller
     {
         $categories = Category::limit(10)->latest()->get();
         $category = Category::where('id', $id)->first();
-        $posts = $category->posts()->paginate(6);
+        $posts = $category->posts()->paginate(3);
         $popular_news = Post::limit(5)->where('id', '!=', $id)->inRandomOrder()->get();
         
         

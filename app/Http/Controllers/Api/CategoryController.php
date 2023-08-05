@@ -17,7 +17,14 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name_uz' => 'required',
+            'name_ru' => 'required',
+        ]);
+
+        $data = Category::create($request->all());
+
+        return $data; 
     }
 
     public function show($id)
@@ -29,11 +36,20 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name_uz' => 'required',
+            'name_ru' => 'required',
+        ]);
+
+        $category->update($request->all());
+
+        return $category; 
     }
 
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return "Succes";
     }
 }

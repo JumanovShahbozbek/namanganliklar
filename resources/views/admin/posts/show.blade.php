@@ -37,12 +37,12 @@
 
                 <tr>
                     <td>Body uz: </td>
-                    <td><b>{{ $post->body_uz }}</b></td>
+                    <td><b>{!! $post->body_uz !!}</b></td>
                 </tr>
 
                 <tr>
                     <td>Title ru: </td>
-                    <td><b>{{ $post->body_uz }}</b></td>
+                    <td><b>{!! $post->body_uz !!}</b></td>
                 </tr>
 
                 <tr>

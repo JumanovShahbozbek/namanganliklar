@@ -38,13 +38,15 @@
                             <input type="search" class="search-input">
                             <button type="submit" class="btn search-btn"></button>
                         </form>
+
                         <div class="languages">
-                            <button type="button" class="btn language__option language__option--active">РУ</button>
+                            <a href="/lang/ru"><button type="button" class="btn language__option language__option--active">РУ</button></a>
                             <div class="languages__list">
-                                <button type="button" class="btn language__option language__option--uz"
-                                    data-status="disabled">UZ</button>
+                                <a href="/lang/uz"><button type="button" class="btn language__option language__option--uz"
+                                    data-status="disabled">UZ</button></a> 
                             </div>
                         </div>
+
                         <div class="telegram-join basic-flex">
                             <a href="#"><img src="/assets/img/tg.png" alt="Telegram">Подписатся</a>
                         </div>
@@ -59,7 +61,7 @@
                     </div>
                     @include('layouts.navbar')
                 </nav>
-                
+
                 @include('sections.advertising')
             </div>
         </header>

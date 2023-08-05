@@ -54,7 +54,7 @@
                     @foreach ($posts as $post)
                         <tr>
                             <th scope="row">{{ ++$loop->index }}</th>
-                            <td>{{ $post->category_id }}</td>
+                            <td>{{ $post->category->name_uz }}</td>
                             <td>{{ $post->title_uz }}</td>
                             <td>{{ $post->title_ru }}</td>
                             <td><img src="/images/{{ $post->img }}" alt="" width="70px"></td>
